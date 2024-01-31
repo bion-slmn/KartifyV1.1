@@ -11,6 +11,7 @@ This allows ease on manipulation of data, reducing the number of requests and pr
 The backend uses flask to create api and template for somepages
  The application runs on port 5001 and the api runs on port 5000
 All this api have hypermedia pagination and they return content as show in the example 
+
 {
 "data": content
 "next_page": 3
