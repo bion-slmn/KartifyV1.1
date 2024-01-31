@@ -21,7 +21,7 @@ All this api have hypermedia pagination and they return content as show in the e
   "prev_page": 1,
   "total_pages": 8
 }
-
+```
 
 ## APIs and Methods
 This methods are for the web_Client:
