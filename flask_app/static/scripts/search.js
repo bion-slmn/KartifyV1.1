@@ -18,9 +18,9 @@ $(function () {
             url: searchLink + name,
             success: function (data) {
                 itemsDiv.empty(); // clear the previous search items
-                const keys = Object.keys(data)
-                keys.forEach((key, index) => {
-                    const item = data[key];
+                const arr = data.data
+                arr.forEach((key, index) => {
+                    const item = key;
                     const itemVendor = item["vendor"];
                     const itemLink = item["link"];
                     const imgUrl = item["img_link"];
