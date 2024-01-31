@@ -1,0 +1,35 @@
+body {
+    margin: 0px;
+    background-color: black;
+    color: #6d57cb;
+    font-family: "Courier New";
+}
+/* LOGO */
+.logo a {
+    color: #6d57cb;
+    font-size: 32px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    margin-left: 10px;
+}
+
+a {
+    text-decoration: none;
+}
+
+footer {
+    position: sticky;
+    background-color: black;
+    text-align: center;
+    width: 100%;
+    bottom: 0;
+    height: 60px;
+    line-height: 60px;
+    font-size: 1.1em;
+    border-top: 1px solid #6d57cb;
+}
+
+footer:after {
+    content: "\a9 2023 Kartify";
+}

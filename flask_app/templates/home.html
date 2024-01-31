@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Kartify</title>
+	<link rel="stylesheet" href="../static/styles/common.css">
+	<link rel="stylesheet" type="text/css" href="../static/styles/home_page.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script src="../static/scripts/home_page.js"></script>
+
+</head>
+
+<body>
+	<header>
+		<nav class="navbar">
+			<!-- LOGO -->
+			<div class="logo"><a href="/">Kartify</a></div>
+			<!-- NAVIGATION MENU -->
+			<ul class="nav-links">
+				<div class="search-container">
+					<form action="/search" method="GET">
+						<input type="search" name="searchName" id="searchInput" placeholder="Search here"
+							aria-label="seachInput">
+					</form>
+				</div>
+				<!-- NAVIGATION MENUS -->
+				<div class="menu">
+
+					<li><a href="/search?searchName=desktop" id="desktop">Desktop</a></li>
+					<li><a href="/search?searchName=laptop" id="laptop">Laptop</a></li>
+				</div>
+
+			</ul>
+		</nav>
+	</header>
+	<div class="section1">
+		<div id="bgImg"></div>
+		<div id="headline">
+			<h1>EVERY DAY IS BLACK FRIDAY!</h1>
+			<button type="button" id="all">BEGIN SHOPPING NOW!</button>
+		</div>
+	</div>
+	<section id="aboutSection">
+		<h2>Find the best deals on computers you want to buy</h2>
+		<div class="siteShowcase">
+			<p>Browse through our curated collections of laptops and desktops and click on the ones you like to go
+				directly to the shopping site</p>
+
+			<img class="siteShowcaseImg" alt="Site screenshot" src="../static/images/kartify-search-showcase.png">
+		</div>
+		<h2>Narrow down on your technological desires...</h2>
+		<div class="siteShowcase">
+			<img class="siteShowcaseImg" alt="Site screenshot" src="../static/images/kartify-filter-showcase.png">
+			<p>Compare prices from hundreds of shopping sites in one place. Quickly filter items according to your
+				preferences</p>
+		</div>
+	</section>
+	<h2 id="startShopping"> Pick your brand to get started </h2>
+	<div class="flex-container">
+		<div class="card" id="ASUS">
+			<img src="../static/images/asus_laptop7.jpg" alt="Avatar" style="width:100%">
+			<div class="container">
+				<h4><b>ASUS</b></h4>
+			</div>
+		</div>
+		<div class="card" id="HP">
+			<img src="../static/images/hero_laptop6.jpg" alt="Avatar" style="width:100%">
+			<div class="container">
+				<h4><b>HP</b></h4>
+			</div>
+		</div>
+		<div class="card" id="LENOVO">
+			<img src="../static/images/hero_laptop1.jpg" alt="Avatar" style="width:100%">
+			<div class="container">
+				<h4><b>LENOVO</b></h4>
+			</div>
+		</div>
+		<div class="card" id="APPLE">
+			<img src="../static/images/hero_laptop6.jpg" alt="Avatar" style="width:100%">
+			<div class="container">
+				<h4><b>APPLE</b></h4>
+			</div>
+		</div>
+	</div>
+	<div id="explainer"></div>
+	<div class="flex-content" id="anchorContent"></div>
+
+	<footer></footer>
+
+
+</body>
+
+</html>

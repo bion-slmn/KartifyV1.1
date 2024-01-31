@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/styles/common.css">
+    <link rel="stylesheet" href="static/styles/search.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <title>Kartify-Search results</title>
+</head>
+
+<body>
+    <header>
+
+        <div class="logo"><a href="/">Kartify</a></div>
+
+        <div id="utilBar">
+            <div id="searchItemDiv">
+                <input type="search" placeholder="Laptops" name="searchName" id="searchInput" value="{{ searchName }}"
+                    aria-label="searchInput">
+                <input type="button" value="Search" id="searchButton">
+            </div>
+            <div id="filterByDiv">
+                <h5>Filter By </h5>
+                <select id="filterBy" name="filterBy" aria-label="filterBy">
+                    <option value="None">None</option>
+                    <option value="phonex">Phonex</option>
+                    <option value="smartbuy">Smartbuy</option>
+                </select>
+            </div>
+            <div id="orderByDiv">
+                <h5>Order By</h5>
+                <select id="orderBy" name="orderBy" aria-label="orderBy">
+                    <option value="ItemPrice">Price</option>
+                    <option value="ItemVendor">Vendor</option>
+                </select>
+                <select id="displayOrder" name="displayOrder" aria-label="displayOrder">
+                    <option value="0">ASC</option>
+                    <option value="1">DESC</option>
+                </select>
+            </div>
+        </div>
+    </header>
+    <div id="searchResults"></div>
+    <footer></footer>
+    <script src="static/scripts/search.js"></script>
+</body>
+
+</html>
