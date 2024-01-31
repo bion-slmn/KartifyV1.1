@@ -67,21 +67,23 @@ class Db_storage:
         cls (string): a class of vendor in the database
         '''
         new_dict = {}
+        new_list = []
         if cls is None:
             for v_class in vendor_class.values():
                 all_obj = self.__session.query(v_class).all()
                 for obj in all_obj:
-                    key = '{}.{}'.format(obj.name, obj.vendor)
-                    new_dict[key] = obj.to_dict()
-            return new_dict
+                    #key = '{}.{}'.format(obj.name, obj.vendor)
+                    #new_dict[key] = obj.to_dict()
+                    new_list.append(obj.to_dict())
+            return new_list
 
         elif cls and cls in vendor_class:
             v_class = vendor_class.get(cls)
             all_obj = self.__session.query(v_class).all()
             for obj in all_obj:
-                key = '{}.{}'.format(obj.name, obj.vendor)
-                new_dict[key] = obj.to_dict()
-            return new_dict
+                #key = '{}.{}'.format(obj.name, obj.vendor)
+                new_list.append(obj.to_dict())
+            return new_list
         return None
 
     def items(self, category, cls=None):
@@ -94,24 +96,24 @@ class Db_storage:
         cls (string/optional): if true, it will search itemm of
         the specified class of vendor only
         else it will search for items of the all class of vendors'''
-        new_dict = {}
+        new_list = []
         if cls and cls in vendor_class:
             cls = vendor_class.get(cls)
             all_obj = self.__session.query(cls).filter(
                     cls.catergory == category)
             for obj in all_obj:
-                key = '{}.{}'.format(obj.name, obj.vendor)
-                new_dict[key] = obj.to_dict()
-            return new_dict
+                #key = '{}.{}'.format(obj.name, obj.vendor)
+                new_list.append(obj.to_dict())
+            return new_list
         if not cls:
             for v_class in vendor_class.values():
 
                 all_obj = self.__session.query(v_class).filter(
                         v_class.catergory == category).all()
                 for obj in all_obj:
-                    key = '{}.{}'.format(obj.name, obj.vendor)
-                    new_dict[key] = obj.to_dict()
-            return new_dict
+                    #key = '{}.{}'.format(obj.name, obj.vendor)
+                    new_list.append(obj.to_dict())
+            return new_list
 
     def search(self, name, vendor=None):
         '''search for an item by name
@@ -119,22 +121,22 @@ class Db_storage:
         name (string/int) : the name that will be used to search
         vendor (string): name of the vendor class to search in
         '''
-        new_dict = {}
+        new_list = []
         if vendor:
             v_class = vendor_class.get(vendor)
             if v_class:
                 all_obj = self.__session.query(v_class).filter(
                         v_class.name.like('%{}%'.format(name))).all()
                 for obj in all_obj:
-                    key = '{}.{}'.format(obj.name, obj.vendor)
-                    new_dict[key] = obj.to_dict()
-                return new_dict
+                    #key = '{}.{}'.format(obj.name, obj.vendor)
+                    new_list.append(obj.to_dict())
+                return new_list
             return None
                 
         for v_class in vendor_class.values():
             all_obj = self.__session.query(v_class).filter(
                     v_class.name.like('%{}%'.format(name))).all()
             for obj in all_obj:
-                key = '{}.{}'.format(obj.name, obj.vendor)
-                new_dict[key] = obj.to_dict()
-        return new_dict
+                #key = '{}.{}'.format(obj.name, obj.vendor)
+                new_list.append(obj.to_dict())
+        return new_list

@@ -3,6 +3,7 @@ from vendors.phonex_vendor import Phonex
 from vendors.smartbuy_vendor import Smartbuy
 from vendors import storage
 from api.v1.views import app_views
+from api.v1.views.pagination import Pagination
 
 
 def seller_class(vendor):
@@ -25,13 +26,16 @@ def laptop(vendor):
 
     if vendor is none it will return the total items of all vendors
     '''
+    page_no = request.args.get('page', default=1, type=int)
+
     if vendor and seller_class(vendor):
          all_items = storage.items('laptop', vendor)
     elif  vendor and not seller_class(vendor):
         abort('404', 'Seller not avialable')
     else:
         all_items = storage.items('laptop')
-    return jsonify(all_items)
+    page = Pagination(all_items)
+    return jsonify(page.get_hyper(page_no))
 
 
 @app_views.route('/desktop/', defaults={'vendor': None})
@@ -45,6 +49,7 @@ def desktop(vendor):
 
     if vendor is none it will return the total items of all vendors
     '''
+    page_no = request.args.get('page', default=1, type=int)
     if vendor:
         vend = seller_class(vendor)
         if vend:
@@ -54,7 +59,8 @@ def desktop(vendor):
     # return all desktops from all vendors 
     else:
         all_items = storage.items('desktop')
-    return jsonify(all_items)
+    page = Pagination(all_items)
+    return jsonify(page.get_hyper(page_no))
 
 
 @app_views.route('/all/', defaults={'vendor': None})
@@ -66,32 +72,40 @@ def all_items(vendor):
      vendor:(string) this the name of the vendor it can eiter be
      Phonex or Smartbuy
      if vendor is none it will return the total items of all vendors
-     '''
+    '''
+    page_no = request.args.get('page', default=1, type=int)
     if vendor:
         vend = seller_class(vendor)
         if vend:
-            return jsonify(storage.all(vendor))
+            data = storage.all(vendor)
+            print(data)
+            page = Pagination(data)
+            return jsonify(page.get_hyper(page_no))
         abort(404, 'Seller Not available')
 
     # if nor vendor is specified
-    return jsonify(storage.all())
+    data = storage.all()
+    page = Pagination(data)
+    return jsonify(page.get_hyper(page_no))
 
 @app_views.route('/search/<name>/<vendor>', methods=["GET"])
 @app_views.route('/search/<name>', methods=["GET"])
-def search(name, vendor=None):
+def search(name, vendor=None,):
     '''this is a search function that searches the data by name
     it searches the item from ll vendors if the name of the vendor
     is not sprcified
-    -parameter
+    -parameter:w
          name (string): name of the items to be searched
          vendor (string): name of the vendor it can be either be phonex or 
          smartbuy
     '''
+    page_no = request.args.get('page', default=1, type=int)
     searchN = name
     search_items = storage.search(searchN, vendor)
     if search_items is None:
         abort(404)
-    return jsonify(search_items)
+    page =  Pagination(search_items)
+    return jsonify(page.get_hyper(page_no))
 
 
 @app_views.route('/compare/<item_1>/<item_2>')

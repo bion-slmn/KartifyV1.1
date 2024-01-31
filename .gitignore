@@ -1,0 +1,7 @@
+# all pycache file
+*__pycache__
+
+#all env file
+.env
+
+.swp
