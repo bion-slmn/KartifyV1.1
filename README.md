@@ -10,23 +10,33 @@ This allows ease on manipulation of data, reducing the number of requests and pr
 
 The backend uses flask to create api and template for somepages
  The application runs on port 5001 and the api runs on port 5000
+All this api have hypermedia pagination and they return content as show in the example 
+##{
+##"data": content,
+##"next_page": 3,
+##"page": 2,
+##"page_size": 10,
+##"prev_page": 1,
+##"total_pages": 8
+##}
+
 ## APIs and Methods
 This methods are for the web_Client:
-### api/v1/laptop/vendor
+### api/v1/laptop/vendor/?page=int
 GET: Return the all laptops from a specific vendor
-### api/v1/desktop/vendor
+### api/v1/desktop/vendor/?page=int
 GET: Return all the desktop from a specific vendor
-### api/v1/all
+### api/v1/all/?page=int
 GET: Return all computers both laptops and desktops in the storage
-### api/v1/all/vendor
+### api/v1/all/vendor/?page=int
 GET: Return all items from the specified vendor
-### api/v1/laptops
+### api/v1/laptops/?page=int
 GET: return all laptops in the storage
-### api/v1/desktops
+### api/v1/desktops/?page=int
 GET: Return all desktops  in storage
-### api.v1/search/name/vendor
+### api.v1/search/name/vendor/?page=int
 GET: Return all items  whose name has the value name match the name specified in the api from the vendor specified
-### api.v1/search/name/
+### api.v1/search/name/?page=int
 GET: Return all items whose name has the value name match the name specified in the api from all vendors
 
 ## How to Install and Run the Project
